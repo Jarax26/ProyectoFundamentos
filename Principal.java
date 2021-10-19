@@ -106,15 +106,9 @@ public class Principal
                 }
             }else if(num == 666)
             {
-                    break;
-                    /*for(int i = 0; i<Sensor.posAnadir; i++)
-                    {
-                        if(Sensor.sensores[i].getTipo().equals("temperatura"))
-                        {
-                            
-                        }
-                    }*/
+                    System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
             }
         }
+        sc.close();
     }
 }
