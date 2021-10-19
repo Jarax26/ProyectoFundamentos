@@ -59,12 +59,38 @@ public class Sensor
         return posAnadir;
     }
     
-    /*public static Sensor [] ordenarValores(Sensor[]desordenado)
-    {
-        Sensor [] ordenado = new Sensor[desordenado.length];
-        for(int i = 0; i<desordenado.length; i++)
+    /*public static Sensor [] ordenarValores(Sensor[]desord)
+    {    
+        int cont = 0;
+        for(int i = 0; i<desord.length; i++)
         {
-            
+            if(desord[i].getTipo().equals("temperatura"))
+            {
+                cont++;
+            }
         }
+        Sensor[]ord = new Sensor[cont];
+        for(int i = 0; i<ord.length; i++)
+        {
+            for(int j = 0; j<desord.length-1;j++){
+                if(desord[j].getTipo().equals("temperatura"))
+                {
+                    ord[i] = desord[j];
+                }
+            }
+        }
+        for (int i = 0; i < ord.length - 1; i++)
+        {
+            for (int j = 0; j < ord.length - 1; j++)
+            {
+                if (ord[j].getValor() > ord[j + 1].getValor())
+                {
+                    double temp = ord[j + 1].getValor();
+                    ord[j + 1].setValor(ord[j].getValor());
+                    ord[j].setValor(temp);
+                }
+            }
+        }
+        return ord;
     }*/
 }
