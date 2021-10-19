@@ -106,7 +106,8 @@ public class Principal
                 }
             }else if(num == 666)
             {
-                    System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
+                break;    
+                //System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
             }
         }
         sc.close();
