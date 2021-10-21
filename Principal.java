@@ -9,6 +9,7 @@ public class Principal
     public static void mostrarMenu()
     {
         Scanner sc = new Scanner(System.in);
+        int x = 0;
         while(true)
         {
             System.out.println("- Ingrese 0 si desea finalizar la ejecución del programa." + "\n"
@@ -26,7 +27,7 @@ public class Principal
             switch(num)
             {
                 case 0:
-                    break;
+                    x = 1;
                 case 1:
                     if(Vehiculo.posAnadir == 10)
                     {
@@ -100,6 +101,10 @@ public class Principal
                 case 666:
                     break;    
                     //System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
+            }
+            if(x == 1)
+            {
+                break;
             }
         }
         sc.close();
