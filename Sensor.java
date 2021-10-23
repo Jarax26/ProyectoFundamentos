@@ -3,6 +3,7 @@ public class Sensor
     public static Sensor [] sensores = new Sensor[8];
     public static int tamano = 8;
     public static int posAnadir = 0;
+    public static int cantSensorTemp = 0;
     private String tipo;
     private double valor;
     
@@ -15,6 +16,10 @@ public class Sensor
     {
         this.tipo = t;
         this.valor = v;
+        if(t.equals("temperatura"))
+        {
+            cantSensorTemp+=1;
+        }
     }
     
     public void setTipo(String t)
@@ -48,10 +53,14 @@ public class Sensor
         String texto1 = "";
         for(int i = 0; i<Sensor.posAnadir; i++)
         {
-            texto = sensores[i].toString().concat("\n");
-            texto1 = texto1.concat(texto);
+            if(i == Sensor.posAnadir-1){
+                texto = sensores[i].toString();
+            }else{
+                texto = sensores[i].toString().concat("\n");
+                texto1 = texto1.concat(texto);
+            }
         }
-        return texto;
+        return texto1;
     }
     
     public static int cantidadSensores()
@@ -59,29 +68,23 @@ public class Sensor
         return posAnadir;
     }
     
-    /*public static Sensor [] ordenarValores(Sensor[]desord)
+    public static Sensor [] ordenarValores(Sensor[]desord)
     {    
-        int cont = 0;
-        for(int i = 0; i<desord.length; i++)
-        {
-            if(desord[i].getTipo().equals("temperatura"))
-            {
-                cont++;
-            }
-        }
-        Sensor[]ord = new Sensor[cont];
+        Sensor[]ord = new Sensor[Sensor.cantSensorTemp];
         for(int i = 0; i<ord.length; i++)
         {
-            for(int j = 0; j<desord.length-1;j++){
+            for(int j = 0; j<desord.length;j++)
+            {
                 if(desord[j].getTipo().equals("temperatura"))
                 {
-                    ord[i] = desord[j];
+                    ord[i].setTipo(desord[j].getTipo());
+                    ord[i].setValor(desord[j].getValor());
                 }
             }
         }
-        for (int i = 0; i < ord.length - 1; i++)
+        for (int i = 0; i < ord.length; i++)
         {
-            for (int j = 0; j < ord.length - 1; j++)
+            for (int j = 0; j < ord.length-1; j++)
             {
                 if (ord[j].getValor() > ord[j + 1].getValor())
                 {
@@ -92,5 +95,5 @@ public class Sensor
             }
         }
         return ord;
-    }*/
+    }
 }
