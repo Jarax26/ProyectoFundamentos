@@ -29,12 +29,13 @@ public class Principal
             switch(num){
                 
                 case 1:
+            
                     while(true)
                     {
                         if(Vehiculo.posAnadir == 10)
                         {
                             System.out.println("Error, base de datos llena");
-                            continue;
+                            break;
                         }
                         System.out.println("Ingrese el modelo del vehiculo: ");
                         int modelo = sc.nextInt();
@@ -98,7 +99,7 @@ public class Principal
                         if(Sensor.posAnadir == 8)
                         {
                             System.out.println("Error, base de datos llena");
-                            continue;
+                            break;
                         }
                         System.out.println("Ingrese el tipo de sensor: ");
                         String tipo = sc.next();
