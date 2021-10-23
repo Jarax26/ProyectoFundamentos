@@ -18,7 +18,7 @@ public class Sensor
         this.valor = v;
         if(t.equals("temperatura"))
         {
-            cantSensorTemp++;
+            cantSensorTemp+=1;
         }
     }
     
@@ -71,15 +71,14 @@ public class Sensor
     
     public static Sensor [] ordenarValores(Sensor[]desord)
     {    
-        Sensor[]ord = new Sensor[Sensor.cantSensorTemp];
+        Sensor[]ord = new Sensor[cantSensorTemp];
         for(int i = 0; i<ord.length; i++)
         {
             for(int j = 0; j<desord.length;j++)
             {
                 if(desord[j].getTipo().equals("temperatura"))
                 {
-                    ord[i].setTipo(desord[j].getTipo());
-                    ord[i].setValor(desord[j].getValor());
+                    ord[i] = new Sensor(desord[j].getTipo(), desord[j].getValor());
                 }else{
                     continue;
                 }
