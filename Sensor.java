@@ -53,8 +53,13 @@ public class Sensor
         String texto1 = "";
         for(int i = 0; i<Sensor.posAnadir; i++)
         {
-            texto = sensores[i].toString().concat("\n");
-            texto1 = texto1.concat(texto);
+            if(i == Sensor.posAnadir-1){
+                texto = sensores[i].toString();
+                texto1 = texto1.concat(texto);
+            }else{
+                texto = sensores[i].toString().concat("\n");
+                texto1 = texto1.concat(texto);
+            }
         }
         return texto1;
     }
@@ -75,6 +80,8 @@ public class Sensor
                 {
                     ord[i].setTipo(desord[j].getTipo());
                     ord[i].setValor(desord[j].getValor());
+                }else{
+                    continue;
                 }
             }
         }
