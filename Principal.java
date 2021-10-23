@@ -29,7 +29,6 @@ public class Principal
             switch(num){
                 
                 case 1:
-            
                     while(true)
                     {
                         if(Vehiculo.posAnadir == 10)
