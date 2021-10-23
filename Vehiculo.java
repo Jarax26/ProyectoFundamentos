@@ -77,8 +77,14 @@ public class Vehiculo
         String texto1 = "";
         for(int i = 0; i<Vehiculo.posAnadir; i++)
         {
-            texto = vehiculos[i].toString().concat("\n");
-            texto1 = texto1.concat(texto);
+            if(i == Vehiculo.posAnadir-1)
+            {
+                texto = vehiculos[i].toString();
+                texto1 = texto1.concat(texto);
+            }else{
+                texto = vehiculos[i].toString().concat("\n");
+                texto1 = texto1.concat(texto);
+            }
         }
         return texto1;
     }
