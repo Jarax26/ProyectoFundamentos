@@ -18,7 +18,7 @@ public class Sensor
         this.valor = v;
         if(t.equals("temperatura"))
         {
-            cantSensorTemp+=1;
+            cantSensorTemp++;
         }
     }
     
