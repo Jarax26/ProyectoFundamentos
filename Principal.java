@@ -135,10 +135,7 @@ public class Principal
                     }
                     break;
                 case 666:
-                    for(int i = 0; i<Sensor.posAnadir; i++)
-                    {
-                        System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
-                    }
+                    System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
                     break;
             }
         }
