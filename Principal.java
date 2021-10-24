@@ -27,9 +27,7 @@ public class Principal
                 break;
             }
             switch(num){
-                
                 case 1:
-            
                     while(true)
                     {
                         if(Vehiculo.posAnadir == 10)
@@ -136,7 +134,7 @@ public class Principal
                     }
                     break;
                 case 666:
-                    System.out.println(Sensor.ordenarValores());
+                    System.out.println(Sensor.toStringOrdenarValores());
                     break;
             }
         }
