@@ -72,13 +72,13 @@ public class Sensor
     public static String toStringOrdenarValores()
     {    
         Sensor[]ord = new Sensor[cantSensorTemp];
-        int x = 0, y = -1;
+        int x = -1;
         for(int i = 0; i<ord.length; i++){
-            while(y<Sensor.posAnadir){
-                y++;
-                if(sensores[y].getTipo().equals("temperatura"))
+            while(x<Sensor.posAnadir){
+                x++;
+                if(sensores[x].getTipo().equals("temperatura"))
                 {
-                    ord[i]  = new Sensor(sensores[y].getTipo(), sensores[y].getValor());
+                    ord[i]  = new Sensor(sensores[x].getTipo(), sensores[x].getValor());
                     break; 
                 }
             }
