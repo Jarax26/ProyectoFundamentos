@@ -136,7 +136,7 @@ public class Principal
                     }
                     break;
                 case 666:
-                    System.out.println(Sensor.ordenarValores(Sensor.sensores).toString());
+                    System.out.println(Sensor.ordenarValores());
                     break;
             }
         }
