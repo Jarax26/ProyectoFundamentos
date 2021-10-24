@@ -69,33 +69,34 @@ public class Sensor
         return posAnadir;
     }
     
-    public static Sensor [] ordenarValores(Sensor[]desord)
+    public static void ordenarValores()
     {    
         Sensor[]ord = new Sensor[cantSensorTemp];
-        for(int i = 0; i<ord.length; i++)
-        {
-            for(int j = 0; j<desord.length;j++)
+        for(int i = 0; i<Sensor.posAnadir; i++){
+            for(int j = 0; j<ord.length;j++)
             {
-                if(desord[j].getTipo().equals("temperatura"))
+                if(sensores[i].getTipo().equals("temperatura"))
                 {
-                    ord[i] = new Sensor(desord[j].getTipo(), desord[j].getValor());
-                }else{
-                    continue;
+                    ord[j] = new Sensor(sensores[i].getTipo(),sensores[i].getValor());
                 }
             }
         }
-        for (int i = 0; i < ord.length; i++)
+        double temp;
+        for (int i = 0; i < ord.length-1; i++)
         {
-            for (int j = 0; j < ord.length-1; j++)
+            for (int j = i + 1; j < ord.length; j++)
             {
-                if (ord[j].getValor() > ord[j + 1].getValor())
+                if (ord[j].getValor() < ord[i].getValor())
                 {
-                    double temp = ord[j + 1].getValor();
-                    ord[j + 1].setValor(ord[j].getValor());
+                    temp = ord[i].getValor();
+                    ord[i].setValor(ord[j].getValor());
                     ord[j].setValor(temp);
                 }
             }
         }
-        return ord;
+        for(int i = 0; i<ord.length; i++)
+        {
+            System.out.println(ord[i].toString());
+        }
     }
 }
