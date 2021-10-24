@@ -69,7 +69,7 @@ public class Sensor
         return posAnadir;
     }
     
-    public static void ordenarValores()
+    public static String toStringOrdenarValores()
     {    
         Sensor[]ord = new Sensor[cantSensorTemp];
         for(int i = 0; i<Sensor.posAnadir; i++){
@@ -94,9 +94,18 @@ public class Sensor
                 }
             }
         }
+        String texto = "";
+        String texto1 = "";
         for(int i = 0; i<ord.length; i++)
         {
-            System.out.println(ord[i].toString());
+            if(i == ord.length-1){
+                texto = ord[i].toString();
+                texto1 = texto1.concat(texto);
+            }else{
+                texto = ord[i].toString().concat("\n");
+                texto1 = texto1.concat(texto);
+            }
         }
+        return texto1;
     }
 }
