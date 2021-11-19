@@ -1,13 +1,14 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Principal
 {
-    public static void main(String[]args)
-    {
+
+    public static void main(String[]args) throws FileNotFoundException {
         Principal.mostrarMenu();
     }
 
-    public static void mostrarMenu(){
+    public static void mostrarMenu() throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
         while(true)
         {
@@ -20,7 +21,8 @@ public class Principal
                     + "- Ingrese 6 para crear un nuevo sensor con su tipo y su valor a un vehículo." + "\n"
                     + "- Ingrese 7 para mostrar los sensores almacenados de un vehículo." + "\n"
                     + "- Ingrese 8 para mostrar la información de todos los sensores de tipo temperatura." + "\n"
-                    + "- Ingrese 9 para mostrar la información del vehículo con más sensores." + "\n"
+                    + "- Ingrese 9 para mostrar la información del vehículo con más sensores." + "\n" 
+                    + "- Ingrese 10 para importar los vehículos del archivo Vehículos.txt." + "\n"
                     + "- Ingrese 666 para mostrar los sensores tipo 'temperatura' ordenados por valor.");
             int num = sc.nextInt();
             if(num == 0)
@@ -128,6 +130,9 @@ public class Principal
                     break;
                 case 9:
                     System.out.println(Vehiculo.mayorSensores());
+                    break;
+                case 10:
+                    Vehiculo.vehiculosTxt();
                     break;
                 case 666:
                     System.out.println(Sensor.toStringOrdenarValores());
