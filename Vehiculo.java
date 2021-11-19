@@ -24,8 +24,8 @@ public class Vehiculo
 
     public Vehiculo()
     {
-        this.id = idActual;
-        idActual++;
+        this.id = Vehiculo.idActual;
+        Vehiculo.idActual++;
         Vehiculo.vehiculos.add(this);
     }
 
@@ -40,8 +40,8 @@ public class Vehiculo
         this.marca = ma;
         this.valorComercial = vC;
         this.color = co;
-        this.id = idActual;
-        idActual++;
+        this.id = Vehiculo.idActual;
+        Vehiculo.idActual++;
         Vehiculo.vehiculos.add(this);
     }
 
@@ -92,7 +92,7 @@ public class Vehiculo
             text.append(sensor.toString() + " ");
         }
         return "Vehiculo -- Modelo " + this.modelo + ", de marca " +this.marca + ", color " + this.color + ", con valor de "
-                + this.valorComercial + " id de: " + id  + " Sensores: " + text;
+                + this.valorComercial + " id de: " + this.id  + " Sensores: " + text;
 
     }
 
@@ -109,7 +109,7 @@ public class Vehiculo
 
     public static int cantidadVehiculos()
     {
-        return vehiculos.size();
+        return Vehiculo.vehiculos.size();
     }
 
     public void anadirSensor(Sensor s) {
@@ -117,7 +117,7 @@ public class Vehiculo
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -125,9 +125,9 @@ public class Vehiculo
     }
 
     public static Vehiculo obtenerVehiculoPorId(int id) {
-        for (int i = 0; i < vehiculos.size(); i++) {
-            if (vehiculos.get(i).getId() == id) {
-                return vehiculos.get(i);
+        for (int i = 0; i < Vehiculo.vehiculos.size(); i++) {
+            if (Vehiculo.vehiculos.get(i).getId() == id) {
+                return Vehiculo.vehiculos.get(i);
             }
         }
         return null;
