@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Vehiculo
 {
@@ -24,7 +29,7 @@ public class Vehiculo
 
     public Vehiculo()
     {
-        this.id = Vehiculo.idActual;
+        this.id = idActual;
         Vehiculo.idActual++;
         Vehiculo.vehiculos.add(this);
     }
@@ -40,7 +45,7 @@ public class Vehiculo
         this.marca = ma;
         this.valorComercial = vC;
         this.color = co;
-        this.id = Vehiculo.idActual;
+        this.id = idActual;
         Vehiculo.idActual++;
         Vehiculo.vehiculos.add(this);
     }
@@ -91,6 +96,7 @@ public class Vehiculo
         for (Sensor sensor: this.getSensores()) {
             text.append(sensor.toString() + " ");
         }
+
         return "Vehiculo -- Modelo " + this.modelo + ", de marca " +this.marca + ", color " + this.color + ", con valor de "
                 + this.valorComercial + " id de: " + this.id  + " Sensores: " + text;
 
@@ -135,10 +141,10 @@ public class Vehiculo
 
     public static String detectorSensoresTemp() {
         String ans = "";
-        for (int i = 0; i < vehiculos.size(); i++) {
-            for (int j = 0; j < vehiculos.get(i).getSensores().size(); j++) {
-                if (vehiculos.get(i).getSensores().get(j).getTipo().equals("temperatura")) {
-                    ans += vehiculos.get(i).getSensores().get(j).toString() + "\n";
+        for (int i = 0; i < Vehiculo.vehiculos.size(); i++) {
+            for (int j = 0; j < Vehiculo.vehiculos.get(i).getSensores().size(); j++) {
+                if (Vehiculo.vehiculos.get(i).getSensores().get(j).getTipo().equals("temperatura")) {
+                    ans += Vehiculo.vehiculos.get(i).getSensores().get(j).toString() + "\n";
                 }
             }
         }
@@ -146,13 +152,34 @@ public class Vehiculo
     }
 
     public static String mayorSensores() {
-        int mayor = vehiculos.get(0).getSensores().size();
-        String infmayor = vehiculos.get(0).toString();
-        for (int x = 0; x < vehiculos.size(); x++) {
-            if(vehiculos.get(x).getSensores().size() > mayor) {
-                    infmayor = vehiculos.get(x).toString();
+        int mayor = Vehiculo.vehiculos.get(0).getSensores().size();
+        String infmayor = Vehiculo.vehiculos.get(0).toString();
+        for (int x = 0; x < Vehiculo.vehiculos.size(); x++) {
+            if(Vehiculo.vehiculos.get(x).getSensores().size() > mayor) {
+                    infmayor = Vehiculo.vehiculos.get(x).toString();
             }
         }
         return infmayor;
+    }
+
+
+
+    public static void vehiculosTxt() {
+        File file = new File("Vehiculos.txt");
+        try {
+            Scanner input = new Scanner(file);
+            String line;
+            while (input.hasNextLine()) {
+                line = input.nextLine();
+                String[] infoVehiculo = line.split(",");
+
+                Vehiculo v1 = new Vehiculo(Integer.parseInt(infoVehiculo[0]), infoVehiculo[1],
+                        Integer.parseInt(infoVehiculo[2]), infoVehiculo[3]);
+
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
