@@ -1,6 +1,7 @@
+import java.util.ArrayList;
+
 public class Sensor
 {
-    public static Sensor [] sensores = new Sensor[8];
     public static int tamano = 8;
     public static int posAnadir = 0;
     public static int cantSensorTemp = 0;
@@ -47,64 +48,41 @@ public class Sensor
         return "Sensor -- Tipo " + this.tipo + " y valor de " + this.valor;
     }
 
-    public static String toStringSensores()
-    {
-        String texto = "";
-        String texto1 = "";
-        for(int i = 0; i<Sensor.posAnadir; i++)
-        {
-            if(i == Sensor.posAnadir-1){
-                texto = Sensor.sensores[i].toString();
-                texto1 = texto1.concat(texto);
-            }else{
-                texto = Sensor.sensores[i].toString().concat("\n");
-                texto1 = texto1.concat(texto);
-            }
-        }
-        return texto1;
-    }
-
-    public static int cantidadSensores()
-    {
-        return Sensor.posAnadir;
-    }
 
     public static String toStringOrdenarValores()
     {
-        Sensor[]ord = new Sensor[cantSensorTemp];
-        int x = -1;
-        for(int i = 0; i<ord.length; i++){
-            while(x<Sensor.posAnadir){
-                x++;
-                if(sensores[x].getTipo().equals("temperatura"))
-                {
-                    ord[i]  = new Sensor(sensores[x].getTipo(), sensores[x].getValor());
-                    break;
+        ArrayList<Sensor> ord = new ArrayList<>();
+
+        for (int i = 0; i < Vehiculo.vehiculos.size(); i++) {
+            for (int j = 0; j < Vehiculo.vehiculos.get(i).getSensores().size(); j++) {
+                if (Vehiculo.vehiculos.get(i).getSensores().get(j).getTipo().equals("temperatura")) {
+                    ord.add(Vehiculo.vehiculos.get(i).getSensores().get(j));
                 }
             }
         }
+        int x = -1;
         double temp;
-        for (int i = 0; i < ord.length-1; i++)
+        for (int i = 0; i < ord.size()-1; i++)
         {
-            for (int j = i + 1; j < ord.length; j++)
+            for (int j = i + 1; j < ord.size(); j++)
             {
-                if (ord[j].getValor() < ord[i].getValor())
+                if (ord.get(j).getValor() < ord.get(i).getValor())
                 {
-                    temp = ord[i].getValor();
-                    ord[i].setValor(ord[j].getValor());
-                    ord[j].setValor(temp);
+                    temp = ord.get(i).getValor();
+                    ord.get(i).setValor(ord.get(j).getValor());
+                    ord.get(j).setValor(temp);
                 }
             }
         }
         String texto = "";
         String texto1 = "";
-        for(int i = 0; i<ord.length; i++)
+        for(int i = 0; i<ord.size(); i++)
         {
-            if(i == ord.length-1){
-                texto = ord[i].toString();
+            if(i == ord.size()-1){
+                texto = ord.get(i).toString();
                 texto1 = texto1.concat(texto);
             }else{
-                texto = ord[i].toString().concat("\n");
+                texto = ord.get(i).toString().concat("\n");
                 texto1 = texto1.concat(texto);
             }
         }
