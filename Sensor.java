@@ -18,7 +18,7 @@ public class Sensor
         this.valor = v;
         if(t.equals("temperatura"))
         {
-            cantSensorTemp+=1;
+            Sensor.cantSensorTemp+=1;
         }
     }
 
@@ -54,10 +54,10 @@ public class Sensor
         for(int i = 0; i<Sensor.posAnadir; i++)
         {
             if(i == Sensor.posAnadir-1){
-                texto = sensores[i].toString();
+                texto = Sensor.sensores[i].toString();
                 texto1 = texto1.concat(texto);
             }else{
-                texto = sensores[i].toString().concat("\n");
+                texto = Sensor.sensores[i].toString().concat("\n");
                 texto1 = texto1.concat(texto);
             }
         }
@@ -66,7 +66,7 @@ public class Sensor
 
     public static int cantidadSensores()
     {
-        return posAnadir;
+        return Sensor.posAnadir;
     }
 
     public static String toStringOrdenarValores()
