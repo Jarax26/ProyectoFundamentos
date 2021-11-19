@@ -38,21 +38,29 @@ public class Bicho {
 
     public static void dispararBala(int pos) {
         if (pos <= 2) {
-            Principal.bichos[0][pos - 1].bala();
+            if (Principal.bichos[0][pos - 1] == null) {
+                System.out.println("No hay ningún bicho al cual disparar.");
+            } else {
+                Principal.bichos[0][pos - 1].bala();
+            }
         }
         else {
-            Principal.bichos[1][pos - 3].bala();
+            if (Principal.bichos[1][pos - 3] == null) {
+                System.out.println("No hay ningún bicho al cual disparar.");
+            } else {
+                Principal.bichos[1][pos - 3].bala();
+            }
         }
     }
 
     public static void vivos(Bicho[][] b) {
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < b[i].length; j++) {
-                if (b[i][j] == null ) {
-                    break;
-                }
-                else if (b[i][j].getSalud() <= 0) {
-                    b[i][j] = null;
+                if (b[i][j] != null ) {
+                    if (b[i][j].getSalud() <= 0) {
+                        b[i][j] = null;
+                        Principal.cantidad--;
+                    }
                 }
             }
         }
@@ -60,16 +68,28 @@ public class Bicho {
 
     public static void bombaAtomica(Bicho[][] b, int p) {
         if (p < 2) {
-            b[0][p] = null;
+            if (b[0][p] != null) {
+                b[0][p].setSalud(0);
+            }
         }
         else {
-            b[1][p - 2] = null;
+            if (b[1][p - 2] != null) {
+                b[1][p - 2].setSalud(0);
+            }
         }
     }
 
     public static void mutante(Bicho[][] b) {
-        int men = b[0][0].getSalud();
-        Bicho posmen = b[0][0];
+        int men = 0;
+        Bicho posmen = null;
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length; j++) {
+                if (b[i][j] != null) {
+                    men = b[i][j].getSalud();
+                    posmen = b[i][j];
+                }
+            }
+        }
         for (int i = 0; i < b.length; i++) {
             for (int j = 0; j < b[i].length; j++) {
                 if (b[i][j] == null) {
