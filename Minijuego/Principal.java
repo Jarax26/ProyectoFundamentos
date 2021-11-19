@@ -5,7 +5,7 @@ public class Principal {
     public static String[] nombres = new String[4];
     public static Bicho[][] bichos = new Bicho[2][2];
     public static String[] frasesAbuela = new String[6];
-
+    static int cantidad;
     public static void main(String[] args) {
         frasesAbuela[0] = "La venganza nunca es buena, mata el alma y el envenena.";
         frasesAbuela[1] = "Mala hierba nunca muere. ";
@@ -19,13 +19,11 @@ public class Principal {
         int num = sc.nextInt();
         if (num == 1) {
             Random ran = new Random();
-            int cantidad = 1 + ran.nextInt(4);
-            System.out.println("Cant " + cantidad);
+            cantidad = 1 + ran.nextInt(4);
             int cont = 0;
             for (int i = 0; i < cantidad; i++) {
                 int tipoBicho;
                 tipoBicho = 1 + ran.nextInt(2);
-                System.out.println("tipo " + tipoBicho);
                 if (tipoBicho == 1) {
                     Bicho bicho = new BichoNormal();
                     if (cont < 2) {
@@ -62,12 +60,12 @@ public class Principal {
             nombres[2] = "       ";
             nombres[3] = "       ";
 
-            while (true) {
-                for (int i = 0; i < cantidad; i++) {
+            while (cantidad > 0) {
+                for (int i = 0; i <bichos.length; i++) {
                     if (i < 2) {
                         if (bichos[0][i] == null) {
                             nombres[i] = "       ";
-                        }else {
+                        } else {
                             nombres[i] = bichos[0][i].getNombre();
                         }
                     } else {
@@ -96,26 +94,28 @@ public class Principal {
                     System.out.println("Se ha disparado al bicho en la posición " + cas);
                     Bicho.dispararBala(cas);
                     Bicho.vivos(bichos);
+
+
                 } else if (opcion == 2) {
                     int pos = ran.nextInt(4);
                     System.out.println("La bomba ha sido lanzada en la posicion " + (pos + 1));
                     Bicho.bombaAtomica(bichos, pos);
                     Bicho.vivos(bichos);
-                }
-                else if (opcion == 3) {
+
+
+                } else if (opcion == 3) {
                     Bicho.mutante(bichos);
                     Bicho.vivos(bichos);
-                    System.out.println(bichos[0][0].getSalud());
-                }
-                else if (opcion == 4) {
+
+                } else if (opcion == 4) {
                     System.out.println("-Abuela: ");
                     int n = ran.nextInt(6);
                     fraseAbuela(n);
+
                 }
             }
-
+            System.out.println("El juego ha finalizado, gracias por jugar.");
         }
-
     }
 
     public static void menu() {
@@ -129,6 +129,7 @@ public class Principal {
     public static void fraseAbuela(int n ) {
         System.out.println(frasesAbuela[n]);
     }
+
 
 
 }
