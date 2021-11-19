@@ -1,5 +1,0 @@
-2020,Ford,1000,amarillo
-2017,Kia,50000,azul
-2021,Renault,4000,rojo
-2009,Subaru,2000,verde
-2001,Mercedes,8000,gris
